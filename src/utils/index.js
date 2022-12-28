@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -12,11 +12,8 @@ import store from './store';
 const bookstoreService = new BookstoreService();
 
 ReactDOM.render(
-    //Предоставляет доступ к Redux Store
     <Provider store={store}>
-        {/* Обработка в компонентах ниже */}
         <ErrorBoundry>
-            {/* Передает сервис через Context API */}
             <BookstoreServiceProvider value={bookstoreService}>
                 <Router>
                     <App />
