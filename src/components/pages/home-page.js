@@ -1,23 +1,13 @@
 import React from "react";
 import BookList from '../book-list';
+import ShoppingCartTable from "../shopping-cart-table";
 
 const HomePage = () => {
-    const books = [
-
-        {
-            id: 1,
-            title: 'Production-Ready Microservices',
-            autor: 'Susasn J. Fowler'
-        },
-        {
-            id: 2,
-            title: 'Release It!',
-            autor: 'Michael T. Nygard'
-        }
-
-    ];
     return (
-        <BookList books={books} />
+        <div>
+            <BookList books={[]} />
+            <ShoppingCartTable />
+        </div>
     )
 };
 
