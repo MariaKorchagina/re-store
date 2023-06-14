@@ -1,16 +1,6 @@
 const initialState = {
-    books: [
-        // {
-        //     id: 1,
-        //     title: 'Production-Ready Microservices',
-        //     autor: 'Susasn J. Fowler'
-        // },
-        // {
-        //     id: 2,
-        //     title: 'Release It!',
-        //     autor: 'Michael T. Nygard'
-        // }
-    ]
+    books: [],
+    loading: true
 };
 
 //Если state undefined, вернется initialState
@@ -19,8 +9,9 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'BOOKS_LOADED':
             return {
-                books: action.payload
+                books: action.payload,
                 //action.payload будет содержать новый массив книг, к-й загрузили
+                loading: false
             };
 
         default:

@@ -11,13 +11,13 @@
     padding-left: 1rem;
   }
   
-  .shop-header .shopping-cart {
+  .shop-header .bi-cart4 {
     align-self: center;
     font-size: 1.3rem;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
   }
   
-  .shop-header .shopping-cart .cart-icon {
+  .shop-header .bi-cart4 .cart-icon {
     font-size: 2.2rem;
     color: cadetblue;
     margin-right: 10px;

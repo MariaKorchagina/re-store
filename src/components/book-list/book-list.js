@@ -6,25 +6,32 @@ import { booksLoaded } from '../../actions';
 import { connect } from "react-redux";
 //connect - подлючает компонент BookList к redux store
 import { withBookstoreService } from '../hoc';
+import Spinner from '../spinner';
 class BookList extends Component {
 
 
     // передаем данные, которые получили из сервиса в store. Store вызывает reducer. Reducer получает действие BOOKS_LOADED и обновляет список книг в store. А обновленный список книг снова возвращается к BooksList через  mapStateToProps через коллекцию books. Наш компонент получает обновленный список книг и через рендер отрисовывает этот список на экране.
     componentDidMount() {
         //получаем данные из сервиса
-        const { bookstoreService } = this.props;
-        const data = bookstoreService.getBooks();
+        const { bookstoreService, booksLoaded } = this.props;
+        const data = bookstoreService.getBooks()
+            .then((data) => booksLoaded(data));
         //   console.log(data)
 
         // передаем actions в redux store
 
-        this.props.booksLoaded(data);
+
         //booksLoaded - не только создает действие , но и автоматически передает тот самый action в redux store
     }
 
 
     render() {
-        const { books } = this.props;
+        const { books, loading } = this.props;
+
+        if (loading) {
+            return <Spinner />
+        }
+
         return (
             <ul className="book-list">
                 {
@@ -39,8 +46,8 @@ class BookList extends Component {
     }
 }
 
-const mapStateToProps = ({ books }) => {
-    return { books };
+const mapStateToProps = ({ books, loading }) => {
+    return { books, loading };
 }
 //mapStateToProps - эта ф-ция определяет какие св-ва получит компонент из Redux
 
